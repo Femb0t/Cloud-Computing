@@ -1,0 +1,32 @@
+For our project we used the cloud client and database managing functionality of MongoDB
+
+Our primary cloud service for storing and managing data
+It allows us to create, store and manage data with no knowledge of SQL which is why it's known as a noSQL database
+
+Data in MongoDB is stored in records called "documents", a type of data structure containing field and value pairs.
+documents can also contain other documents, arrays or arrays of documents
+This flexibility allows for easy implementation and manipulation of our records
+
+MongoDB also offers data storage and allocation
+It uses a horizontal scaling system through a process called "sharding"
+Sharding is a means to distribute data across multiple machines by splitting the data into shards
+
+MongoDB acts as an intermediary between the client and the cluster to handle any data requests and changes
+The data is distributed and balanced between the different machines and each shard contains chunks of the data it receives
+For our use case MongoDB handles all of our data distribution including maintaining copies of data, ensuring proper 
+hashing of the data, and data correction and validation automatically
+This tool helps simplify our end so we can speed up the development of our program
+
+Another aspect of MongoDB we use is Mongoose
+
+Mongoose is a library included with MongoDB that manages objects
+In our database we have multiple attributes including the patients name, age, gender, where they live,
+    the date they were infected, and a list of people they came into contact with
+After we finalized the data we would be recording we used Mongoose to create the schema for our database
+Our primary reasoning for using Mongoose is how easy it is to use and integrate into node.js
+
+
+The final part of MongoDB we used is MongoDB Compass
+
+MongoDB Compass is a visual tool for viewing the stored data structures and allow for easy data interactions
+It allows us to manage our server and its performance as well as update data that is stored on the cloud

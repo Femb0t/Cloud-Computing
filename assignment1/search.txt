@@ -1,0 +1,69 @@
+#! /usr/bin/python
+from mpi4py import MPI
+import numpy as np
+
+file = open("data.txt", "r")
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
+
+#master
+if rank == 0:
+    num = []
+    lines = 0
+    while True:
+        inputLine = file.readline()
+        if inputLine == "":
+            break
+        lines += 1 #keep the line count for splitting lines
+        inputLine = inputLine.rstrip('\n')
+        num.append(int(inputLine))
+    #split the lines into 4
+    first = floor(lines/4)
+    second = floor(first*2)
+    third = second + first
+    #split the array of numbers into 4 arrays
+    num1 = num[0:first]       #first 25%
+    num2 = num[first:second]  #second 25%
+    num3 = num[second:third]  #third 25%
+    num4 = num[third:]        #last 25%
+
+    comm.send([num1, 1], dest = 1, tag = 11)       #array, line
+    comm.send([num2, first], dest = 2, tag = 11)
+    comm.send([num3, second], dest = 3, tag = 11)
+
+    line = len(num) - first #get starting line
+    for value in num4:
+	for i in [1, 2, 3]:
+        interrupt = comm.recv(source = i, tag = 11)
+        if interrupt == 1:
+			break
+        if value == 11: #master found the number
+            #notify other processes
+            comm.bcast(1, root=rank)
+            #print index and rank
+            print("Process %d got 11 at line %d\n" % (rank, line))
+        line += 1
+    #master finished
+
+
+#slaves
+if rank >= 1:
+    num, line = comm.recv(source = 0, tag = 11)
+    # if rank == 1: #get starting line if rank = 1
+    #     line = 1
+    # elif rank > 1: #get starting line if rank 2-3
+    #     line = (rank - 1) * len(num)
+    for value in num:
+        #receive any interrupt
+	for i in [1, 2, 3]:
+		interrupt = comm.recv(source = i, tag = 11)
+	        if interrupt = 1:
+        	    exit()
+        if value == 11: #slave found the number
+            #notify other processes
+            comm.bcast(1, root=rank)
+            #print index and rank
+            print("Process %d got 11 at line %d\n" % (rank, line))
+        line += 1 #increment line
+    #slave finished

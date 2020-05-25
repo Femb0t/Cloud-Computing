@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+  <name>mapred.job.tracker</name>
+  <value>129.114.25.61:54311</value>
+  <description>The host and port that the MapReduce job tracker runs
+  at. Provide the ip address of your master node. The port number must be 54311 or 8021.
+  </description>
+</property>
+</configuration>

@@ -1,0 +1,11 @@
+#host login
+ssh -i .\Slipspace.pem cc@129.114.25.61
+#slave login
+ssh -i .\Slipspace.pem cc@129.114.25.60
+mpiexec -mca btl ^openib --hostfile mpihosts -n 4 python -m mpi4py search.py
+mpiexec -mca btl ^openib --hostfile mpihosts -n 4 --display-map python -m mpi4py search.py
+
+#To run the code
+dos2unix search.py
+scp search.py cc@129.114.25.60:
+mpiexec -mca btl ^openib --hostfile mpihosts -n 4 --display-map python -m mpi4py search.py

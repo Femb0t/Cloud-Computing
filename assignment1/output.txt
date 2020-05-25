@@ -1,0 +1,110 @@
+cc@group9-node-1:~$ mpiexec -mca btl ^openib --hostfile mpihosts -n 2 --display-map python -m mpi4py search.py
+ Data for JOB [24069,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: group9-node-1   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24069,1] App: 0 Process rank: 0
+        Process OMPI jobid: [24069,1] App: 0 Process rank: 1
+
+ =============================================================
+Process 1 got 11 at line 39642
+
+cc@group9-node-1:~$ mpiexec -mca btl ^openib --hostfile mpihosts -n 3 --display-map python -m mpi4py search.py
+ Data for JOB [24177,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: group9-node-1   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24177,1] App: 0 Process rank: 0
+        Process OMPI jobid: [24177,1] App: 0 Process rank: 1
+
+ Data for node: 10.230.119.77   Num slots: 2    Max slots: 0    Num procs: 1
+        Process OMPI jobid: [24177,1] App: 0 Process rank: 2
+
+ =============================================================
+Process 2 got 11 at line 39642
+
+cc@group9-node-1:~$ mpiexec -mca btl ^openib --hostfile mpihosts -n 4 --display-map python -m mpi4py search.py
+ Data for JOB [24182,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: group9-node-1   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24182,1] App: 0 Process rank: 0
+        Process OMPI jobid: [24182,1] App: 0 Process rank: 1
+
+ Data for node: 10.230.119.77   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24182,1] App: 0 Process rank: 2
+        Process OMPI jobid: [24182,1] App: 0 Process rank: 3
+
+ =============================================================
+Process 3 got 11 at line 39642
+
+cc@group9-node-1:~$ mpiexec -mca btl ^openib --hostfile mpihosts -n 4 --display-map python -m mpi4py echo.py
+ Data for JOB [24160,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: group9-node-1   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24160,1] App: 0 Process rank: 0
+        Process OMPI jobid: [24160,1] App: 0 Process rank: 1
+
+ Data for node: 10.230.119.77   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24160,1] App: 0 Process rank: 2
+        Process OMPI jobid: [24160,1] App: 0 Process rank: 3
+
+ =============================================================
+Enter a number (negative to end):
+4
+
+Process 0 got  4
+Enter a number (negative to end):
+Process 1 got  4
+Process 2 got  4
+Process 3 got  4
+2
+
+Process 0 got  2
+Enter a number (negative to end):
+Process 1 got  2
+Process 2 got  2
+Process 3 got  2
+-1
+cc@group9-node-1:~$ mpiexec -mca btl ^openib --hostfile mpihosts -n 2 --display-map python -m mpi4py echo.py
+ Data for JOB [24168,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: group9-node-1   Num slots: 2    Max slots: 0    Num procs: 2
+        Process OMPI jobid: [24168,1] App: 0 Process rank: 0
+        Process OMPI jobid: [24168,1] App: 0 Process rank: 1
+
+ =============================================================
+Enter a number (negative to end):
+5
+
+Process 0 got  5
+Enter a number (negative to end):
+Process 1 got  5
+3
+
+Process 0 got  3
+Enter a number (negative to end):
+Process 1 got  3
+-5
+cc@group9-node-1:~$ mpiexec -mca btl ^openib --hostfile mpihosts -n 1 --display-map python -m mpi4py echo.py
+ Data for JOB [24144,1] offset 0
+
+ ========================   JOB MAP   ========================
+
+ Data for node: group9-node-1   Num slots: 2    Max slots: 0    Num procs: 1
+        Process OMPI jobid: [24144,1] App: 0 Process rank: 0
+
+ =============================================================
+Enter a number (negative to end):
+5
+
+Process 0 got  5
+Enter a number (negative to end):
+-4
